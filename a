@@ -360,7 +360,6 @@ function MakoLib:CreateWindow(data)
 				nwWindow.UI.Enabled = false
 			elseif nwWindow.UI.Enabled == false and input.KeyCode == Enum.KeyCode.LeftControl then
 				nwWindow.UI.Enabled = true
-			end
 		end
 	end)
 	local isMinimized = false

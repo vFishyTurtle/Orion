@@ -223,9 +223,6 @@ local Window = {}; do
 									task.spawn(function()
 										task.wait()
 										keybindSet = input.KeyCode
-										if input.KeyCode == Enum.KeyCode.Backspace then
-											keybindSet = nil
-										end
 									end)
 									e:Disconnect()
 								end
@@ -235,7 +232,11 @@ local Window = {}; do
 					Services.UserInputService.InputBegan:Connect(function(input, gp)
 						if not gp then
 							if input.KeyCode == keybindSet then
+								if input.KeyCode == Enum.KeyCode.Backspace then
+									keybindSet = nil
+								else
 								onPress()
+								end
 							end
 						end
 					end)

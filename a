@@ -356,8 +356,9 @@ function MakoLib:CreateWindow(data)
 		nwWindow.UI.Enabled = false
 	end)
 	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
-		if input.KeyCode == Enum.KeyCode.RightShift then
+		if input.KeyCode == Enum.KeyCode.LeftControl then
 			nwWindow.UI.Enabled = true
+			show()
 			e:Disconnect()
 		end
 	end)

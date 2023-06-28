@@ -360,6 +360,7 @@ function MakoLib:CreateWindow(data)
 			if nwWindow.UI.Enabled == false then
 				show()
 			e:Disconnect()
+			end
 		end
 	end)
 	local isMinimized = false

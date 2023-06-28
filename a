@@ -355,16 +355,13 @@ function MakoLib:CreateWindow(data)
 	nwWindow.UI.Frame.Topbar.CloseButton.MouseButton1Click:Connect(function()
 		nwWindow.UI.Enabled = false
 	end)
-	local isWindowVisible = true
-
 	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
 		if input.KeyCode == Enum.KeyCode.LeftControl then
-			isWindowVisible = not isWindowVisible
-			nwWindow.UI.Enabled = isWindowVisible
+			nwWindow.UI.Enabled = false
+			hide()
 			e:Disconnect()
 		end
 	end)
-	
 	local isMinimized = false
 	nwWindow.UI.Frame.Topbar.MinimizeButton.MouseButton1Click:Connect(function()
 		if not isMinimized then

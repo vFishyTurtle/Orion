@@ -232,11 +232,7 @@ local Window = {}; do
 					Services.UserInputService.InputBegan:Connect(function(input, gp)
 						if not gp then
 							if input.KeyCode == keybindSet then
-								if input.KeyCode == Enum.KeyCode.Backspace then
-									keybindSet = nil
-								else
 								onPress()
-								end
 							end
 						end
 					end)
@@ -360,7 +356,12 @@ function MakoLib:CreateWindow(data)
 		nwWindow.UI.Enabled = false
 	end)
 	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
-		if input.KeyCode == Enum.KeyCode.LeftControl then
+		if input.KeyCode == Enum.KeyCode.LeftControl and nwWindow.UI.Enabled == true then
+			nwWindow.UI.Enabled = false
+		end
+	end)
+	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
+		if input.KeyCode == Enum.KeyCode.LeftControl and nwWindow.UI.Enabled == false then
 			nwWindow.UI.Enabled = true
 		end
 	end)

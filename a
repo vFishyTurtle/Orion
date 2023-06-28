@@ -357,14 +357,16 @@ function MakoLib:CreateWindow(data)
 	end)
 	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
 		if input.KeyCode == Enum.KeyCode.LeftControl then
-			if nwTab.Visible == true then
 			nwWindow.UI.Enabled = true
 				show()
 			e:Disconnect()
-			else
-				nwWindow.UI.Enabled = false
+		end
+	end)
+	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
+		if input.KeyCode == Enum.KeyCode.LeftControl then
+			nwWindow.UI.Enabled = false
 				hide()
-			end
+			e:Disconnect()
 		end
 	end)
 	local isMinimized = false

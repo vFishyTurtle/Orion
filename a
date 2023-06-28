@@ -355,7 +355,7 @@ function MakoLib:CreateWindow(data)
 	nwWindow.UI.Frame.Topbar.CloseButton.MouseButton1Click:Connect(function()
 		nwWindow.UI.Enabled = false
 	end)
-	local l; e = Services.UserInputService.InputBegan:Connect(function(input)
+	local e; e = Services.UserInputService.InputBegan:Connect(function(input)
 		if input.KeyCode == Enum.KeyCode.LeftAlt then
 			nwWindow.UI.Enabled = false
 		end

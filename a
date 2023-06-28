@@ -400,7 +400,7 @@ function MakoLib:CreateWindow(data)
 						dragging = false
 						e:Disconnect()
 					end
-				end
+				end)
 			end
 		end)
 

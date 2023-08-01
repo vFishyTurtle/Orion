@@ -134,11 +134,11 @@ TweenUp()
 local function C_8()
     local script = AHloader["8"]
     local TweenService = game:GetService("TweenService")
-    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+    local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
     
     while not isLoaded do
         script.Parent.Rotation = 0
-        TweenService:Create(script.Parent, tweenInfo, {Rotation = 360}):Play()
+        TweenService:Create(script.Parent, tweenInfo, {Rotation = 560}):Play()
         wait(1)
     end
 end

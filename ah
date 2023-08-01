@@ -1,0 +1,129 @@
+local AHloader = {};
+local TweenService = game:GetService("TweenService")
+
+AHloader["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+AHloader["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+AHloader["2"] = Instance.new("Frame", AHloader["1"]);
+AHloader["2"]["BorderSizePixel"] = 0;
+AHloader["2"]["BackgroundColor3"] = Color3.fromRGB(25, 25, 25);
+AHloader["2"]["Size"] = UDim2.new(0, 589, 0, 352);
+AHloader["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+AHloader["2"]["Position"] = UDim2.new(0.2973901033401489, 0, 0.31473684310913086, 0);
+AHloader["2"]["Name"] = [[MainFrame]];
+
+AHloader["3"] = Instance.new("UICorner", AHloader["2"]);
+AHloader["3"]["CornerRadius"] = UDim.new(0, 6);
+
+AHloader["4"] = Instance.new("ImageLabel", AHloader["2"]);
+AHloader["4"]["BorderSizePixel"] = 0;
+AHloader["4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["4"]["Image"] = [[rbxassetid://14271134151]];
+AHloader["4"]["Size"] = UDim2.new(0, 235, 0, 165);
+AHloader["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+AHloader["4"]["Name"] = [[AHlogo]];
+AHloader["4"]["BackgroundTransparency"] = 1;
+AHloader["4"]["Position"] = UDim2.new(0.30050933361053467, 0, 0.1619318127632141, 0);
+
+AHloader["5"] = Instance.new("ImageLabel", AHloader["2"]);
+AHloader["5"]["ZIndex"] = 3;
+AHloader["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["5"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+AHloader["5"]["Image"] = [[rbxassetid://13332271166]];
+AHloader["5"]["Size"] = UDim2.new(0.4077316224575043, 0, 0.5345283150672913, 0);
+AHloader["5"]["Name"] = [[SpinningCircle]];
+AHloader["5"]["BackgroundTransparency"] = 1;
+AHloader["5"]["Position"] = UDim2.new(0.49916955828666687, 0, 0.3945215940475464, 0);
+
+AHloader["6"] = Instance.new("UIAspectRatioConstraint", AHloader["5"]);
+
+AHloader["7"] = Instance.new("UIGradient", AHloader["5"]);
+AHloader["7"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.3062499761581421),NumberSequenceKeypoint.new(0.743, 1),NumberSequenceKeypoint.new(1.000, 1)};
+AHloader["7"]["Rotation"] = -90;
+
+AHloader["8"] = Instance.new("LocalScript", AHloader["5"]);
+AHloader["8"]["Name"] = [[Spin]];
+
+AHloader["9"] = Instance.new("Frame", AHloader["2"]);
+AHloader["9"]["BorderSizePixel"] = 0;
+AHloader["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["9"]["Size"] = UDim2.new(0, 396, 0, 6);
+AHloader["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+AHloader["9"]["Position"] = UDim2.new(0.1646859049797058, 0, 0.8977272510528564, 0);
+AHloader["9"]["Name"] = [[backbar]];
+
+AHloader["a"] = Instance.new("UICorner", AHloader["9"]);
+AHloader["a"]["CornerRadius"] = UDim.new(0, 6);
+
+AHloader["b"] = Instance.new("Frame", AHloader["9"]);
+AHloader["b"]["BorderSizePixel"] = 0;
+AHloader["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["b"]["Size"] = UDim2.new(0, 88, 0, 6);
+AHloader["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+AHloader["b"]["Position"] = UDim2.new(-0.0025252525229007006, 0, 0, 0);
+AHloader["b"]["Name"] = [[mainbar]];
+
+AHloader["c"] = Instance.new("UICorner", AHloader["b"]);
+AHloader["c"]["CornerRadius"] = UDim.new(0, 6);
+
+AHloader["d"] = Instance.new("UIGradient", AHloader["b"]);
+AHloader["d"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(99, 99, 99)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(202, 147, 45))};
+
+AHloader["e"] = Instance.new("TextLabel", AHloader["2"]);
+AHloader["e"]["BorderSizePixel"] = 0;
+AHloader["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+AHloader["e"]["TextSize"] = 14;
+AHloader["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+AHloader["e"]["Size"] = UDim2.new(0, 200, 0, 22);
+AHloader["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+AHloader["e"]["Text"] = [[authenticating...]];
+AHloader["e"]["Name"] = [[loadtext]];
+AHloader["e"]["BackgroundTransparency"] = 1;
+AHloader["e"]["Position"] = UDim2.new(0.3293718099594116, 0, 0.8181818127632141, 0);
+AHloader["2"].Position = UDim2.new(0.5, -AHloader["2"].Size.X.Offset / 2, 1, 0)
+
+AHloader["b"].Size = UDim2.new(0, 0, 0, 6)
+getgenv().loadermain = AHloader["1"]
+local isLoaded = false
+
+local function TweenUp()
+    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local targetY = 0.5 - AHloader["2"].Size.Y.Offset / 2
+    local tween = game:GetService("TweenService"):Create(AHloader["2"], tweenInfo, {Position = UDim2.new(0.5, -AHloader["2"].Size.X.Offset / 2, 0.5, -AHloader["2"].Size.Y.Offset / 2)})
+    
+    local loadText = AHloader["e"]
+    loadText.Text = "Loading..."
+    
+    tween.Completed:Connect(function()
+        loadText.Text = "Authenticating..."
+        
+        local mainbarTween = game:GetService("TweenService"):Create(AHloader["b"], tweenInfo, {Size = UDim2.new(0, AHloader["9"].Size.X.Offset, 0, 6)})
+        mainbarTween:Play()
+        
+        mainbarTween.Completed:Connect(function()
+            loadText.Text = "Loaded"
+            isLoaded = true
+        end)
+    end)
+    
+    tween:Play()
+end
+
+TweenUp()
+
+local function C_8()
+    local script = AHloader["8"]
+    local TweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+    
+    while not isLoaded do
+        script.Parent.Rotation = 0
+        TweenService:Create(script.Parent, tweenInfo, {Rotation = 1200}):Play()
+        wait(1)
+    end
+end
+
+task.spawn(C_8)
+
+return AHloader["1"], require;

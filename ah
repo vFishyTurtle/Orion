@@ -1,4 +1,23 @@
 local AHloader = {};
+
+if tostring(game.GameId) ~= "3150475059" then return end;
+local isexecutorclosure = is_synapse_function or isexecutorclosure;
+
+for i,v in next, getconnections(game:GetService("ScriptContext").Error) do
+v:Disable()
+end
+
+for i,v in next, getgc() do
+	if type(v) == "function" and islclosure(v) and not isexecutorclosure(v) and getinfo(v).source:find("PlayerModule.LocalScript") then
+		local const = table.find(getconstants(v), 4000001);
+		
+		if const then
+			setconstant(v, const, 1); 
+		end
+	end
+ end
+ hookfunction(game:GetService("LogService").GetLogHistory, function() return {} end)
+
 local TweenService = game:GetService("TweenService")
 
 AHloader["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
@@ -119,7 +138,7 @@ local function C_8()
     
     while not isLoaded do
         script.Parent.Rotation = 0
-        TweenService:Create(script.Parent, tweenInfo, {Rotation = 1200}):Play()
+        TweenService:Create(script.Parent, tweenInfo, {Rotation = 500}):Play()
         wait(1)
     end
 end
